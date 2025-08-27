@@ -7,10 +7,12 @@ public class Brick : MonoBehaviour
     private void Start()
     {
         bricksHealth = BrickData.brickHealth;
+        Renderer rend = GetComponent<Renderer>();
+        rend.material.color = BrickData.brickColor;
     }
     private void OnCollisionEnter(Collision collision) 
     {
-        if (collision.gameObject.name == "Ball") 
+        if (collision.gameObject.name == "Ball")
         {
             bricksHealth -= 1;
             BrickHealthCheck();
