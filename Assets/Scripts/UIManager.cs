@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static UIManager Instance { get; private set; }
+
+    [SerializeField] GameObject Ball;
+    private void Awake()
     {
-        
+        //Singleton check
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetBallButton() 
     {
+        Ball.transform.position = new Vector3(0.0f, -0.3f, -1.0f);
         
     }
 }

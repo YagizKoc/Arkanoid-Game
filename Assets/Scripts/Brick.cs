@@ -12,7 +12,7 @@ public class Brick : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision) 
     {
-        if (collision.gameObject.name == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
             bricksHealth -= 1;
             BrickHealthCheck();
@@ -23,6 +23,10 @@ public class Brick : MonoBehaviour
         if (bricksHealth <= 0) 
         {
             Destroy(gameObject);
+            int roll = GameManager.Instance.GenerateRandomN(100);
+            Debug.Log("brick rolled " + roll);
+            GameManager.Instance.InsantiatePowerUp();
+
         }
     }
 }

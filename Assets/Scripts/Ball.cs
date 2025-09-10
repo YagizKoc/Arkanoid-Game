@@ -18,10 +18,13 @@ public class Ball : MonoBehaviour
        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (gameObject.transform.position.y < -1) 
+        {
+            //Testing//DestroyBall();
+        }
     }
 
     private void FixedUpdate()
@@ -52,10 +55,12 @@ public class Ball : MonoBehaviour
         
         if (ballVector.x == 0.0f && collision.gameObject.name == "Player") //Start of the Game
         {
-            if ((playerPosition.x - ballPosition.x < 0.06 && playerPosition.x - ballPosition.x > 0))
+            if ((playerPosition.x - ballPosition.x < 0.12 && playerPosition.x - ballPosition.x > 0))
                 ballVector = new Vector3(1, -ballVector.y, 0);
-            else if(((playerPosition.x - ballPosition.x > -0.06 && playerPosition.x - ballPosition.x < 0)))
+            else if (((playerPosition.x - ballPosition.x > -0.12 && playerPosition.x - ballPosition.x < 0)))
                 ballVector = new Vector3(-1, -ballVector.y, 0);
+            else if (playerPosition.x == 0)
+                ballVector = new Vector3(0, -ballVector.y, 0);
         }
         else if (ballVector.x != 0.0f && collision.gameObject.name == "Player") 
         {
@@ -129,5 +134,11 @@ public class Ball : MonoBehaviour
                
             }
         }
+    }
+
+    void DestroyBall() 
+    {
+        Destroy(gameObject);
+        
     }
 }

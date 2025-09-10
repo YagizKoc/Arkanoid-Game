@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GreenBrick
   m_EditorClassIdentifier: 
   brickColor: {r: 0, g: 1, b: 0.44260526, a: 0}
-  brickHealth: 2
+  brickHealth: 1
   brickPoint: 10
